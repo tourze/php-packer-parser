@@ -7,51 +7,51 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/tourze/php-packer-parser.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/php-packer-parser)
 [![Total Downloads](https://img.shields.io/packagist/dt/tourze/php-packer-parser.svg?style=flat-square)](https://packagist.org/packages/tourze/php-packer-parser)
 
-PHP Packer Parser is an advanced PHP code parser and dependency analyzer library. Built on top of PHP Packer AST and PHP Packer Analysis, it provides a simple API to recursively parse PHP files, track dependencies, support PSR-4 autoloading and performance profiling.
+PHP Packer Parser 是一个用于解析 PHP 代码及其依赖关系的高级工具库，基于 PHP Packer AST 和 PHP Packer Analysis，提供了简洁易用的 API，可递归解析 PHP 文件、跟踪依赖、支持 PSR-4 命名空间与性能分析。
 
-## Features
+## 功能特性
 
-- Recursively parse PHP files and their dependencies
-- Track and analyze file dependencies
-- PSR-4 compatible namespace mapping and file resolution
-- Performance timing and monitoring
-- Robust error handling and exception mechanism
-- Highly customizable parser configuration
+- 递归解析 PHP 文件及其依赖
+- 依赖关系追踪与分析
+- PSR-4 兼容命名空间映射与查找
+- 性能计时与监控
+- 错误处理与异常机制
+- 可自定义解析配置
 
-## Installation
+## 安装说明
 
-Requires PHP 8.1 or above.
+要求 PHP 8.1 及以上版本。
 
-Install via Composer:
+使用 Composer 安装：
 
 ```bash
 composer require tourze/php-packer-parser
 ```
 
-## Quick Start
+## 快速开始
 
-### Parse PHP files and dependencies
+### 解析 PHP 文件及依赖
 
 ```php
 use PhpPacker\Parser\ParserFactory;
 
-// Create a parser
+// 创建解析器
 $parser = ParserFactory::create(
     '/path/to/entry.php',
-    ['*vendor/symfony/*', '*tests/*'] // Exclude patterns
+    ['*vendor/symfony/*', '*tests/*'] // 排除模式
 );
 
-// Parse entry file and all dependencies
+// 解析入口文件及所有依赖
 $parser->parse('/path/to/entry.php');
 
-// Get processed files
+// 获取已处理文件列表
 $processedFiles = $parser->getProcessedFiles();
 
-// Get dependencies
+// 获取依赖关系
 $dependencies = $parser->getDependencies();
 ```
 
-### Custom configuration
+### 使用自定义配置
 
 ```php
 use PhpPacker\Parser\Config\ParserConfig;
@@ -64,7 +64,7 @@ $config->setMaxRecursionDepth(50);
 $parser = ParserFactory::create('/path/to/entry.php', [], $config);
 ```
 
-### PSR-4 Loader usage
+### 使用 PSR-4 加载器
 
 ```php
 use PhpPacker\Parser\Psr4Loader;
@@ -74,15 +74,15 @@ $psr4Map = $loader->getPsr4Map();
 $paths = $loader->findPossiblePaths('Namespace\\Class');
 ```
 
-## Documentation
+## 详细文档
 
-- Advanced configuration: logging, recursion depth, AST cache and more
-- See source code and unit tests for detailed API usage
+- 支持自定义日志、递归深度、AST 缓存等高级配置
+- 详细 API 请参考源码及测试用例
 
-## Contributing
+## 贡献指南
 
-Pull requests and issues are welcome! Please follow PSR-12 coding standards and ensure all PHPUnit tests pass before submitting.
+欢迎提交 Issue 与 PR，建议遵循 PSR-12 代码规范，提交前请确保通过 PHPUnit 测试。
 
-## License
+## 版权和许可
 
 MIT License © tourze
